@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+
+    <div>
+        <label for="fromCurrency">From Currency:</label>
+        <select id="fromCurrency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="IDR">ID Rupiah (IDR)</option>
+            <!-- Add more currency options as needed -->
+        </select>
+    </div>
+
+    <div>
+        <label for="toCurrency">To Currency:</label>
+        <select id="toCurrency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="IDR">ID Rupiah (IDR)</option>
+            <!-- Add more currency options as needed -->
+        </select>
+    </div>
+
+    <div>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+    </div>
+
+    <div>
+        <button onclick="convertCurrency()">Convert</button>
+    </div>
+
+    <div>
+        <h2>Conversion Result:</h2>
+        <p id="result">Result will be displayed here.</p>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+
+            // Define fixed conversion rates (in real-world, fetch from an API)
+            const conversionRates = {
+                USD: { EUR: 0.85, GBP: 0.73, IDR: 15363.85},
+                EUR: { USD: 1.18, GBP: 0.86, IDR: 16454.63 },
+                GBP: { USD: 1.37, EUR: 1.17, IDR: 19159.83 },
+                IDR: { USD: 0.000065, EUR: 0.000061, GBP: 0.000052}
+            };
+
+            if (!conversionRates[fromCurrency] || !conversionRates[fromCurrency][toCurrency]) {
+                alert("Conversion not supported!");
+                return;
+            }
+
+            const convertedAmount = amount * conversionRates[fromCurrency][toCurrency];
+
+            document.getElementById("result").textContent = `${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+        }
+    </script>
+</body>
+</html>
