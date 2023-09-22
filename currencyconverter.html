@@ -4,37 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
+    <style>
+        div{
+            text-align: center;
+        }
+        /* CSS for centering the "From Currency" dropdown */
+        .currencypart {
+            height: 80px;
+            width: 100%;
+            background-image: url("currency_background.jfif");
+        }
+        .formLoc {
+             /* Adjust this value as needed */
+            margin-top: 20px;
+            margin-left: 0%;
+            display: inline-block;
+        }
+        .formLoc select {
+            display: inline;
+        }
+
+        .toLoc {
+            text-align: center;
+             /* Adjust this value as needed */
+            margin-left: 25%;
+            display: inline-block;
+        }
+        .toLoc select {
+            display: inline;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Currency Converter</h1>
+    <h1 style="text-align: center">Currency Converter</h1>
+    <div class="currencypart">
+        <div class="formLoc">
+            <label for="fromCurrency">FROM:</label>
+            <br>
+            <select id="fromCurrency">
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="GBP">British Pound (GBP)</option>
+                <option value="IDR">ID Rupiah (IDR)</option>
+                <!-- Add more currency options as needed -->
+            </select>
+        </div>
 
-    <div>
-        <label for="fromCurrency">From Currency:</label>
-        <select id="fromCurrency">
-            <option value="USD">US Dollar (USD)</option>
-            <option value="EUR">Euro (EUR)</option>
-            <option value="GBP">British Pound (GBP)</option>
-            <option value="IDR">ID Rupiah (IDR)</option>
-            <!-- Add more currency options as needed -->
-        </select>
+        <div class="toLoc">
+            <label for="toCurrency">TO:</label>
+            <br>
+            <select id="toCurrency">
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="GBP">British Pound (GBP)</option>
+                <option value="IDR">ID Rupiah (IDR)</option>
+                <!-- Add more currency options as needed -->
+            </select>
+        </div>
     </div>
-
-    <div>
-        <label for="toCurrency">To Currency:</label>
-        <select id="toCurrency">
-            <option value="USD">US Dollar (USD)</option>
-            <option value="EUR">Euro (EUR)</option>
-            <option value="GBP">British Pound (GBP)</option>
-            <option value="IDR">ID Rupiah (IDR)</option>
-            <!-- Add more currency options as needed -->
-        </select>
-    </div>
-
+    <br>
     <div>
         <label for="amount">Amount:</label>
+        <br><br>
         <input type="number" id="amount" placeholder="Enter amount">
     </div>
-
+ <br>
     <div>
         <button onclick="convertCurrency()">Convert</button>
     </div>
